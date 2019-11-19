@@ -44,10 +44,26 @@ jobs:
           name: Test bundlesize
           command: yarn test:bundlesize
 
+      # Build Brahmos
+      - run:
+          name: Build Brahmos
+          command: yarn bundle     
+
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is 
+          # taken to be the root directory of the workspace.
+          root: .
+          # Must be relative path from root
+          paths:
+            - package.json
+            - dist       
+
   bench:
     docker:
       - image: ameerthehacker/brahmos-automated-benchmark:v0.0.1
     steps:
+      - attach_workspace:
+          at: /benchmarking-tool/frameworks/keyed/brahmos/lib
       - run:
           name: Benchmark brahmos
           command: sh bench.sh
