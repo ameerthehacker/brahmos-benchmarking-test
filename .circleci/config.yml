@@ -45,16 +45,16 @@ jobs:
       # Build Brahmos
       - run:
           name: Build Brahmos
-          command: yarn bundle     
+          command: yarn bundle
 
       - persist_to_workspace:
-          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is 
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
           # taken to be the root directory of the workspace.
           root: .
           # Must be relative path from root
           paths:
             - package.json
-            - dist       
+            - dist
 
   bench:
     docker:
@@ -64,5 +64,4 @@ jobs:
           at: /benchmarking-tool/frameworks/keyed/brahmos/lib
       - run:
           name: Benchmark brahmos
-          command: if [[ ! -z $CI_PULL_REQUEST ]] ; then sh /benchmarking-tool/bench.sh 5 ; else echo Skipping as it is not a PR ; fi
-          
+          command: if [[ ! -z $CI_PULL_REQUEST ]] ; then sh /benchmarking-tool/bench.sh 10 ; else echo Skipping as it is not a PR ; fi
