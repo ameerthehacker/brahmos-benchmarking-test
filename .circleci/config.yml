@@ -1,7 +1,7 @@
 version: 2
 workflows:
   version: 2
-  build_and_test:
+  build_and_bench:
     jobs:
       - build
       - bench:
@@ -9,7 +9,7 @@ workflows:
             - build
           filters:
             branches:
-              only: /^(?!pull\/).*$/
+              only: /^(?pull\/).*$/
 jobs:
   build:
     docker:
@@ -67,7 +67,4 @@ jobs:
       - run:
           name: Benchmark brahmos
           command: sh /benchmarking-tool/bench.sh 5
-
-      - run:
-          name: check results
-          command: ls /benchmarking-tool/webdriver-ts-results/dist/
+          
