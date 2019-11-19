@@ -2,7 +2,7 @@
   <img src="https://unpkg.com/brahmos@0.5.0/brahmos.svg" alt="Brahmos.js" width="250">
 </p>
 
-# Brahmos
+# Brahmos update
 Supercharged JavaScript library to build user interfaces with modern React API and native templates.
 
 ## Features
