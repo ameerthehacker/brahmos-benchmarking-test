@@ -66,4 +66,8 @@ jobs:
           at: /benchmarking-tool/frameworks/keyed/brahmos/lib
       - run:
           name: Benchmark brahmos
-          command: sh /benchmarking-tool/bench.sh
+          command: sh /benchmarking-tool/bench.sh 1
+
+      - run:
+          name: check results
+          command: ls /benchmarking-tool/webdriver-ts-results/dist/
