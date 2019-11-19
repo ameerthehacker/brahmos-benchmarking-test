@@ -9,7 +9,7 @@ workflows:
             - build
           filters:
             branches:
-              only: /^(?pull\/).*$/
+              only: /pull\/[0-9]+/
 jobs:
   build:
     docker:
