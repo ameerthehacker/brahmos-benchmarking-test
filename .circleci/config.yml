@@ -66,4 +66,4 @@ jobs:
           at: /benchmarking-tool/frameworks/keyed/brahmos/lib
       - run:
           name: Benchmark brahmos
-          command: sh bench.sh
+          command: sh /benchmarking-tool/bench.sh
