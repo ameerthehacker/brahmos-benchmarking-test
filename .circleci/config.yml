@@ -7,9 +7,7 @@ workflows:
       - bench:
           requires:
             - build
-          filters:
-            branches:
-              only: /pull\/[0-9]+/
+
 jobs:
   build:
     docker:
@@ -66,5 +64,5 @@ jobs:
           at: /benchmarking-tool/frameworks/keyed/brahmos/lib
       - run:
           name: Benchmark brahmos
-          command: sh /benchmarking-tool/bench.sh 5
+          command: if [[ ! -z $CI_PULL_REQUEST ]] ; then sh /benchmarking-tool/bench.sh 5 ; else echo Skipping as it is not a PR ; fi
           
